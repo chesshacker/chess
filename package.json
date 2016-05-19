@@ -1,0 +1,26 @@
+{
+  "name": "@steveortiz/chess",
+  "version": "1.0.0",
+  "description": "a library to help build chess programs",
+  "keywords": [
+    "chess"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steveortiz/chess.git"
+  },
+  "author": "Steve Ortiz <steve@ortizaggies.com> (https://steveortiz.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steveortiz/chess/issues"
+  },
+  "homepage": "https://github.com/steveortiz/chess#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}
