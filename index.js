@@ -1,2 +1,4 @@
-exports.type = require('./lib/type');
-exports.square = require('./lib/square');
+module.exports = Object.assign({},
+  require('./lib/type'),
+  require('./lib/square')
+);

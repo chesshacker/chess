@@ -1,95 +1,95 @@
 const chai = require('chai').should();
-const { square, type } = require('../index');
+const c = require('../index');
 
 describe('square', () => {
   describe('make', () => {
     it('valid input', () => {
-      square.make(type.FILE_A, type.RANK_1).should.eql(type.A1);
-      square.make(type.FILE_B, type.RANK_1).should.eql(type.B1);
-      square.make(type.FILE_H, type.RANK_1).should.eql(type.H1);
-      square.make(type.FILE_A, type.RANK_2).should.eql(type.A2);
-      square.make(type.FILE_A, type.RANK_8).should.eql(type.A8);
-      square.make(type.FILE_H, type.RANK_8).should.eql(type.H8);
+      c.makeSquare(c.FILE_A, c.RANK_1).should.eql(c.A1);
+      c.makeSquare(c.FILE_B, c.RANK_1).should.eql(c.B1);
+      c.makeSquare(c.FILE_H, c.RANK_1).should.eql(c.H1);
+      c.makeSquare(c.FILE_A, c.RANK_2).should.eql(c.A2);
+      c.makeSquare(c.FILE_A, c.RANK_8).should.eql(c.A8);
+      c.makeSquare(c.FILE_H, c.RANK_8).should.eql(c.H8);
     });
     it('invalid input', () => {
-      square.make(type.FILE_H + 1, type.RANK_8).should.eql(type.A8);
-      square.make(type.FILE_A - 1, type.RANK_1).should.eql(type.SQUARE_NOT_FOUND);
-      square.make(type.FILE_A - 1, type.RANK_2).should.eql(type.SQUARE_NOT_FOUND);
-      square.make(type.FILE_A, type.RANK_8 + 1).should.eql(type.NUMBER_OF_SQUARES);
-      square.make(type.FILE_A, type.RANK_1 - 1).should.eql(-8);
+      c.makeSquare(c.FILE_H + 1, c.RANK_8).should.eql(c.A8);
+      c.makeSquare(c.FILE_A - 1, c.RANK_1).should.eql(-1);
+      c.makeSquare(c.FILE_A - 1, c.RANK_2).should.eql(-1);
+      c.makeSquare(c.FILE_A, c.RANK_8 + 1).should.eql(64);
+      c.makeSquare(c.FILE_A, c.RANK_1 - 1).should.eql(-8);
     });
   });
   describe('file', () => {
     it('valid input', () => {
-      square.file(type.A1).should.eql(type.FILE_A);
-      square.file(type.B1).should.eql(type.FILE_B);
-      square.file(type.H1).should.eql(type.FILE_H);
-      square.file(type.A2).should.eql(type.FILE_A);
-      square.file(type.A8).should.eql(type.FILE_A);
-      square.file(type.H8).should.eql(type.FILE_H);
+      c.squareFile(c.A1).should.eql(c.FILE_A);
+      c.squareFile(c.B1).should.eql(c.FILE_B);
+      c.squareFile(c.H1).should.eql(c.FILE_H);
+      c.squareFile(c.A2).should.eql(c.FILE_A);
+      c.squareFile(c.A8).should.eql(c.FILE_A);
+      c.squareFile(c.H8).should.eql(c.FILE_H);
     });
     it('invalid input', () => {
-      square.file(type.SQUARE_NOT_FOUND).should.eql(type.FILE_H);
-      square.file(type.NUMBER_OF_SQUARES).should.eql(type.FILE_A);
+      c.squareFile(-1).should.eql(c.FILE_H);
+      c.squareFile(c.NUMBER_OF_SQUARES).should.eql(c.FILE_A);
     });
   });
   describe('rank', () => {
     it('valid input', () => {
-      square.rank(type.A1).should.eql(type.RANK_1);
-      square.rank(type.B1).should.eql(type.RANK_1);
-      square.rank(type.H1).should.eql(type.RANK_1);
-      square.rank(type.A2).should.eql(type.RANK_2);
-      square.rank(type.A8).should.eql(type.RANK_8);
-      square.rank(type.H8).should.eql(type.RANK_8);
+      c.squareRank(c.A1).should.eql(c.RANK_1);
+      c.squareRank(c.B1).should.eql(c.RANK_1);
+      c.squareRank(c.H1).should.eql(c.RANK_1);
+      c.squareRank(c.A2).should.eql(c.RANK_2);
+      c.squareRank(c.A8).should.eql(c.RANK_8);
+      c.squareRank(c.H8).should.eql(c.RANK_8);
     });
     it('invalid input', () => {
-      square.rank(type.SQUARE_NOT_FOUND).should.eql(type.RANK_NOT_FOUND);
-      square.rank(type.NUMBER_OF_SQUARES).should.eql(type.NUMBER_OF_RANKS);
+      c.squareRank(-1).should.eql(-1);
+      c.squareRank(c.NUMBER_OF_SQUARES).should.eql(8);
     });
   });
-  describe('fileFromChar', () => {
+  describe('charToFile', () => {
     it('valid input', () => {
-      square.fileFromChar('a').should.eql(type.FILE_A);
-      square.fileFromChar('c').should.eql(type.FILE_C);
-      square.fileFromChar('h').should.eql(type.FILE_H);
+      c.charToFile('a').should.eql(c.FILE_A);
+      c.charToFile('c').should.eql(c.FILE_C);
+      c.charToFile('h').should.eql(c.FILE_H);
     });
     it('invalid input', () => {
-      square.fileFromChar('A').should.eql(-32);
-      square.fileFromChar('`').should.eql(type.FILE_NOT_FOUND);
-      square.fileFromChar('i').should.eql(type.NUMBER_OF_FILES);
+      c.charToFile('A').should.eql(-32);
+      c.charToFile('`').should.eql(-1);
+      c.charToFile('i').should.eql(8);
     });
   });
-  describe('rankFromChar', () => {
+  describe('charToRank', () => {
     it('valid input', () => {
-      square.rankFromChar('1').should.eql(type.RANK_1);
-      square.rankFromChar('3').should.eql(type.RANK_3);
-      square.rankFromChar('8').should.eql(type.RANK_8);
+      c.charToRank('1').should.eql(c.RANK_1);
+      c.charToRank('3').should.eql(c.RANK_3);
+      c.charToRank('8').should.eql(c.RANK_8);
     });
     it('invalid input', () => {
-      square.rankFromChar('0').should.eql(type.RANK_NOT_FOUND);
-      square.rankFromChar('9').should.eql(type.NUMBER_OF_RANKS);
+      c.charToRank('0').should.eql(-1);
+      c.charToRank('9').should.eql(8);
     });
   });
   describe('fileToChar', () => {
     it('valid input', () => {
-      square.fileToChar(type.FILE_A).should.eql('a');
-      square.fileToChar(type.FILE_D).should.eql('d');
-      square.fileToChar(type.FILE_H).should.eql('h');
+      c.fileToChar(c.FILE_A).should.eql('a');
+      c.fileToChar(c.FILE_D).should.eql('d');
+      c.fileToChar(c.FILE_H).should.eql('h');
     });
     it('invalid input', () => {
-      square.fileToChar(type.FILE_NOT_FOUND).should.eql('`');
-      square.fileToChar(type.NUMBER_OF_FILES).should.eql('i');
+      c.fileToChar(-1).should.eql('`');
+      c.fileToChar(c.NUMBER_OF_FILES).should.eql('i');
     });
   });
   describe('rankToChar', () => {
     it('valid input', () => {
-      square.rankToChar(type.RANK_1).should.eql('1');
-      square.rankToChar(type.RANK_4).should.eql('4');
-      square.rankToChar(type.RANK_8).should.eql('8');
+      c.rankToChar(c.RANK_1).should.eql('1');
+      c.rankToChar(c.RANK_4).should.eql('4');
+      c.rankToChar(c.RANK_8).should.eql('8');
     });
     it('invalid input', () => {
-      square.rankToChar(type.RANK_NOT_FOUND).should.eql('0');
-      square.rankToChar(type.NUMBER_OF_RANKS).should.eql('9');
+      c.rankToChar(-1).should.eql('0');
+      c.rankToChar(c.NUMBER_OF_RANKS).should.eql('9');
     });
   });
 });
