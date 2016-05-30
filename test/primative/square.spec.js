@@ -1,7 +1,5 @@
-const should = require('chai').should();
-const c = require('../index');
-
-describe('square', () => {
+require('../setup');
+module.exports = describe('square', () => {
   describe('makeSquare', () => {
     it('valid input', () => {
       c.makeSquare(c.FILE_A, c.RANK_1).should.equal(c.A1);

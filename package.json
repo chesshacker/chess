@@ -5,7 +5,7 @@
   "keywords": [
     "chess"
   ],
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha"
   },

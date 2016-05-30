@@ -1,7 +1,5 @@
-const should = require('chai').should();
-const c = require('../index');
-
-describe('piece', () => {
+require('../setup');
+module.exports = describe('piece', () => {
   describe('pieceColor', () => {
     it('valid input', () => {
       c.pieceColor(c.BLACK_BISHOP).should.equal(c.BLACK_PIECE);

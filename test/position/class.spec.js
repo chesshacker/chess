@@ -1,6 +1,4 @@
-const should = require('chai').should();
-const c = require('../index');
-
+require('../setup');
 function positionIsLikeNew(position) {
   const firstRank = [
     c.WHITE_ROOK, c.WHITE_KNIGHT, c.WHITE_BISHOP, c.WHITE_QUEEN,
@@ -31,7 +29,7 @@ function positionIsLikeNew(position) {
   position.getCastle().should.equal(c.CASTLE_KQkq);
 }
 
-describe('position', () => {
+module.exports = describe('class', () => {
   let position;
   beforeEach(() => {
     position = new c.Position();
