@@ -48,18 +48,17 @@ module.exports = describe('class', () => {
     position.getCastle().should.equal(c.CASTLE_NONE);
   });
   it('reset', () => {
-    position.clear();
-    position.reset();
+    position.clear().reset();
     positionIsLikeNew(position);
   });
   it('copy', () => {
-    position2 = new c.Position();
-    position2.clear();
-    position2.setPiece(c.E4, c.WHITE_QUEEN);
-    position2.setPiece(c.D5, c.BLACK_KNIGHT);
-    position2.setBlackToMove();
-    position2.setEnPassant(c.FILE_B);
-    position2.setCastle(c.CASTLE_Qq);
+    position2 = new c.Position()
+      .clear()
+      .setPiece(c.E4, c.WHITE_QUEEN)
+      .setPiece(c.D5, c.BLACK_KNIGHT)
+      .setBlackToMove()
+      .setEnPassant(c.FILE_B)
+      .setCastle(c.CASTLE_Qq);
     position.copy(position2);
     position.getPiece(c.E4).should.equal(c.WHITE_QUEEN);
     position.getPiece(c.D5).should.equal(c.BLACK_KNIGHT);
@@ -68,8 +67,7 @@ module.exports = describe('class', () => {
     position.getCastle().should.equal(c.CASTLE_Qq);
   });
   it('setPiece', () => {
-    position.clear();
-    position.setPiece(c.A1, c.WHITE_KING);
+    position.clear().setPiece(c.A1, c.WHITE_KING);
     position.getPiece(c.A1).should.equal(c.WHITE_KING);
   });
   it('set(White|Black)ToMove', () => {
