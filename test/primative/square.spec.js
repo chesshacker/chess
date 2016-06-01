@@ -97,4 +97,36 @@ module.exports = describe('square', () => {
       c.rankToChar(c.NUMBER_OF_RANKS).should.equal('9');
     });
   });
+  describe('allSquares', () => {
+    it('returns a sequence of squares', () => {
+      let actualValue;
+      let expectedValue = c.A1;
+      for (actualValue of c.allSquares()) {
+        actualValue.should.equal(expectedValue++);
+      }
+      actualValue.should.equal(c.H8);
+    });
+  });
+  describe('squareToString', () => {
+    it('valid input', () => {
+      c.squareToString(c.A1).should.equal('a1');
+      c.squareToString(c.E1).should.equal('e1');
+      c.squareToString(c.H8).should.equal('h8');
+    });
+    it('invalid input', () => {
+      should.equal(c.squareToString(-1), undefined);
+      should.equal(c.squareToString(c.NUMBER_OF_SQUARES), undefined);
+    });
+  });
+  describe('stringToSquare', () => {
+    it('valid input', () => {
+      c.stringToSquare('a1').should.equal(c.A1);
+      c.stringToSquare('e1').should.equal(c.E1);
+      c.stringToSquare('h8').should.equal(c.H8);
+    });
+    it('invalid input', () => {
+      should.equal(c.squareToString('x1'), undefined);
+      should.equal(c.squareToString(), undefined);
+    });
+  });
 });
