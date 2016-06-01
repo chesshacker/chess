@@ -37,10 +37,10 @@ module.exports = describe('piece', () => {
       c.charToPiece('r').should.equal(c.BLACK_ROOK);
     });
     it('invalid input', () => {
-      // always returns null
-      should.equal(c.charToPiece('-'), null);
-      should.equal(c.charToPiece('?'), null);
-      should.equal(c.charToPiece('Z'), null);
+      // always returns undefined
+      should.equal(c.charToPiece('-'), undefined);
+      should.equal(c.charToPiece('?'), undefined);
+      should.equal(c.charToPiece('Z'), undefined);
     });
   });
   describe('pieceToChar', () => {
@@ -51,7 +51,6 @@ module.exports = describe('piece', () => {
       c.pieceToChar(c.BLACK_PAWN).should.equal('p');
       c.pieceToChar(c.BLACK_QUEEN).should.equal('q');
       c.pieceToChar(c.BLACK_ROOK).should.equal('r');
-      c.pieceToChar(c.EMPTY).should.equal('-');
       c.pieceToChar(c.WHITE_BISHOP).should.equal('B');
       c.pieceToChar(c.WHITE_KING).should.equal('K');
       c.pieceToChar(c.WHITE_KNIGHT).should.equal('N');
@@ -60,14 +59,15 @@ module.exports = describe('piece', () => {
       c.pieceToChar(c.WHITE_ROOK).should.equal('R');
     });
     it('invalid input', () => {
-      // always returns null
-      should.equal(c.pieceToChar(-1), null);
-      should.equal(c.pieceToChar(16), null);
-      should.equal(c.pieceToChar(116), null);
-      // even the reserved piece values 7, 8 and 15 should be null
-      should.equal(c.pieceToChar(7), null);
-      should.equal(c.pieceToChar(8), null);
-      should.equal(c.pieceToChar(15), null);
+      // always returns undefined
+      should.equal(c.pieceToChar(c.EMPTY), undefined);
+      should.equal(c.pieceToChar(-1), undefined);
+      should.equal(c.pieceToChar(16), undefined);
+      should.equal(c.pieceToChar(116), undefined);
+      // even the reserved piece values 7, 8 and 15 should be undefined
+      should.equal(c.pieceToChar(7), undefined);
+      should.equal(c.pieceToChar(8), undefined);
+      should.equal(c.pieceToChar(15), undefined);
     });
   });
   describe('pieceToWhite', () => {
@@ -130,7 +130,8 @@ module.exports = describe('piece', () => {
     });
     it('invalid input', () => {
       // does not return a relevant response
-      // TODO: test
+      c.pieceIsPawn(c.EMPTY).should.be.false
+      c.pieceIsPawn(25).should.be.true
     });
   });
 });
