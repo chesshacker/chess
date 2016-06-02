@@ -4,5 +4,6 @@ describe('primative', () => {
 });
 describe('position', () => {
   require('./position/class.spec'),
-  require('./position/from-fen.spec')
+  require('./position/from-fen.spec'),
+  require('./position/to-string.spec')
 });
