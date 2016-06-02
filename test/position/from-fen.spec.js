@@ -192,5 +192,17 @@ module.exports = describe('from-fen', () => {
       position.getPiece(c.B4).should.equal(c.WHITE_KING);
       position.isWhiteToMove().should.be.false;
     });
+    it('valid four part fen', () => {
+      position.fromFen('3k4/8/8/Pp6/8/8/8/4K2R w K b6');
+      position.clear.callCount.should.equal(1);
+      position.getPiece(c.D8).should.equal(c.BLACK_KING);
+      position.getPiece(c.A5).should.equal(c.WHITE_PAWN);
+      position.getPiece(c.B5).should.equal(c.BLACK_PAWN);
+      position.getPiece(c.E1).should.equal(c.WHITE_KING);
+      position.getPiece(c.H1).should.equal(c.WHITE_ROOK);
+      position.isWhiteToMove().should.be.true;
+      position.getCastle().should.equal(c.CASTLE_K);
+      position.getEnPassant().should.equal(c.FILE_B);
+    });
   });
 });
