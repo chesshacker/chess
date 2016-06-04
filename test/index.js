@@ -1,6 +1,7 @@
 describe('primative', () => {
   require('./primative/square.spec'),
-  require('./primative/piece.spec')
+  require('./primative/piece.spec'),
+  require('./primative/move.spec')
 });
 describe('position', () => {
   require('./position/class.spec'),
