@@ -9,3 +9,6 @@ describe('position', () => {
   require('./position/to-fen.spec'),
   require('./position/to-string.spec')
 });
+describe('moving', () => {
+  require('./moving/move-maker.spec')
+});
