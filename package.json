@@ -1,5 +1,5 @@
 {
-  "name": "@steveortiz/chess",
+  "name": "@chesshacker/chess",
   "version": "1.0.0",
   "description": "a library to help build chess programs",
   "keywords": [
@@ -9,11 +9,8 @@
   "scripts": {
     "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/steveortiz/chess.git"
-  },
-  "author": "Steve Ortiz <steve@ortizaggies.com> (https://steveortiz.github.io)",
+  "repository": "git+https://github.com/chesshacker/chess.git",
+  "author": "Steve Ortiz <steve@ortizaggies.com> (https://chesshacker.github.io)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/steveortiz/chess/issues"
