@@ -48,8 +48,8 @@ module.exports = describe('MoveMaker', () => {
       position.fromFen(FENS[index]);
       moveMaker.move(MOVES[index]);
       position.toFen().should.equal(FENS[index+1]);
-      // moveMaker.undo();
-      // position.toFen().should.equal(FENS[index]);
+      moveMaker.undo();
+      position.toFen().should.equal(FENS[index]);
     };
   }
   it('normal move without capture by white', testMove(0));
@@ -58,4 +58,16 @@ module.exports = describe('MoveMaker', () => {
   it('enPassant capture', testMove(4));
   it('promotion', testMove(8));
   it('castle', testMove(14));
+  it('handles many moves', () => {
+    position = new c.Position();
+    moveMaker = new c.MoveMaker(position);
+    MOVES.forEach((move, index) => {
+      moveMaker.move(move);
+      position.toFen().should.equal(FENS[index+1]);
+    });
+    for (let index = MOVES.length-1; index >= 0; index--) {
+      moveMaker.undo();
+      position.toFen().should.equal(FENS[index]);
+    }
+  });
 });
